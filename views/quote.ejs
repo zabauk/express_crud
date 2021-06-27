@@ -18,6 +18,13 @@
                 <input type="text" name="name" class="form-control">
                 <button class="btn-primary">Save</button>
             </form>
+            <div class="quotes">
+                <ul>
+                    <% for(var i=0; i<quotes.length; i++){ %>
+                        <li>Quote is : <%= quotes[i].quote %>. Name is <%= quotes[i].name %></li>
+                        <% } %>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

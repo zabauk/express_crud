@@ -29,7 +29,10 @@ MongoClient.connect(url, {useNewUrlParser:true, useUnifiedTopology:true}, (err, 
     console.log(`MongoDB Connect ${url}`)
 
     app.get('/quote', (req, res)=>{
-        res.render('quote.ejs')
+        db.collection('quote').find().toArray().then(result=>{
+            res.render('quote.ejs', {quotes: result})
+        }).catch(err=>console.log(err))
+        
     })
     
     

@@ -1,25 +1,28 @@
-body{
-    font-family: 14px;
-    font-family: 'Courier New', Courier, monospace;
+body {
+  font-family: 14px;
+  font-family: "Courier New", Courier, monospace;
 }
-.container{
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+.container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.title{
-    text-align: center;
+.title {
+  text-align: center;
 }
 
-.form-control{
-    width: 100%;
-    padding: 10px;
-    margin: 7px 0px;
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 7px 0px;
 }
-.btn-primary{
-    padding: 15px 25px;
-    background-color: rgb(71, 71, 241);
-    border: none;
-    cursor: pointer;
-    color: white;
+.btn-primary {
+  padding: 15px 25px;
+  background-color: rgb(71, 71, 241);
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+ul li {
+  margin-bottom: 20px;
 }

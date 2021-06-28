@@ -12,6 +12,9 @@ app.use(express.static('public'))
 //use body parser
 app.use(bodyParser.urlencoded({extended:true}))
 
+//use json from server
+app.use(bodyParser.json())
+
 //database connect
 const MongoClient=require('mongodb').MongoClient
 //url
@@ -46,7 +49,26 @@ MongoClient.connect(url, {useNewUrlParser:true, useUnifiedTopology:true}, (err, 
     }, function(req, res){
         res.redirect('/quote')
     })
+
+    //update data
+    app.put('/quote', (req, res)=>{
+        quouteCollection.findOneAndUpdate(
+            {name:'Yoda'},
+            {
+                $set:{
+                    quote:req.body.quote,
+                    name:req.body.name,
+                }
+            },
+            {
+                upsert:true
+            }).then(result=>res.redirect('/quote')).catch(err=>console.log(err))
+    })
+
+
 })
+
+
 
 app.get('/', function(req, res){
     res.send('Hello World')

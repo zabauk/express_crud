@@ -4,10 +4,21 @@ update.addEventListener('click', _ =>{
         method:'PUT',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
-            quote:'Drama movie',
+            quote:'One two three',
             name:'Jcaker in the heart'
         })
-    }).then(res=>{if(res.ok){
-        return res.json()
-    }}).then(window.location.reload(true))
+    })
+})
+
+//delete button
+const delbtn=document.querySelector('#delete-button')
+delbtn.addEventListener('click', _ =>{
+    const name=document.getElementById('input-name').value;
+    fetch('/quote', {
+        method:'DELETE',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            name:name
+        })
+    })
 })

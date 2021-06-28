@@ -39,15 +39,12 @@ MongoClient.connect(url, {useNewUrlParser:true, useUnifiedTopology:true}, (err, 
     })
     
     
-    app.post('/quote', (req, res, next)=>{
+    app.post('/quote', (req, res)=>{
         quouteCollection.insertOne(req.body).then(result=>{
-            console.log(result)
+            res.redirect('/quote')
         }).catch(err=>{
             console.log(error)
         })
-        next()
-    }, function(req, res){
-        res.redirect('/quote')
     })
 
     //update data
@@ -63,6 +60,13 @@ MongoClient.connect(url, {useNewUrlParser:true, useUnifiedTopology:true}, (err, 
             {
                 upsert:true
             }).then(result=>res.redirect('/quote')).catch(err=>console.log(err))
+    })
+
+    //delete
+    app.delete('/quote', (req, res)=>{
+        quouteCollection.deleteOne({
+            name:req.body.name
+        }).then(console.log('abc')).catch(err=>console.log(err))
     })
 
 
